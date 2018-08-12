@@ -14,6 +14,11 @@ h1 {
     padding: 10%;
 }
 
+p {
+    padding: 10px;
+    font-size: 18px;
+}
+
 button {
     font-family: 'Raleway', sans-serif;
     font-weight: bold;
@@ -24,6 +29,7 @@ button {
     border: 2px solid #000;
     display: block;
     margin: 0 auto;
+    padding: 10px;
 }
 
 #container {
@@ -34,6 +40,16 @@ button {
     border-radius: 25px;
 }
 
+
+.rules {
+    font-family: 'Raleway', sans-serif;
+    color: #561A18;
+    width: 675px;
+    margin: auto;
+    padding: 30px;
+    font-size: 16px;
+    margin-top: 20px;
+}
 .timer {
     font-family: 'Raleway', sans-serif;
     color: #561A18;
@@ -41,7 +57,7 @@ button {
     margin: auto;
 }
 
-.questions {
+#questions {
     font-family: 'Raleway', sans-serif;
     color: #561A18;
     width: 675px;
@@ -51,4 +67,5 @@ button {
     margin-top: 20px;
     
 }
+
 
