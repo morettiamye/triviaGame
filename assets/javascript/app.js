@@ -9,7 +9,7 @@ var quizQuestions = [
     {
         question: "What is Usagi Tsukino's true identity?",
         choice: [ "Sailor Moon", "Sailor Venus", "Sailor Mercury", "Queen Beryl"],
-        correct: 1,
+        correct: 0,
     },   
    
     {
@@ -21,47 +21,70 @@ var quizQuestions = [
     {
         question: "Who are the guardian cats?",
         choice: ["Naru & Umino", "Luna & Artemis", "Haruka & Michiru", "Phobos & Deimos"],
-        correct: 2,
+        correct: 1,
     },
 
     {
         question: "Who is Usagi's true love?",
         choice: [ "Seiya", "Motoki", "Haruka", "Mamoru"],
-        correct: 4,
+        correct: 3,
     },
     
     {
         question: "Who is the Sailor Guardian of Rebirth?",
         choice: [ "Sailor Pluto", "Sailor Uranus", "Sailor Saturn", "Sailor Neptune"],
-        correct: 3,
+        correct: 2,
     }
 ]
 
 
 
 //Rules
-$(".rules").html("<p>Click the start button to begin the quiz.  You get 30 seconds to answer every question.  After 30 seconds the screen will clear and you can see how many answers you got wrong, and how many you got right. Can you get every question right?!")
+$(".rules").html("<p>Click the start button to begin the quiz.  You get 45 seconds to answer every question.  After 30 seconds the screen will clear and you can see how many answers you got wrong, and how many you got right. Can you get every question right?!")
 
 
 // Timer with start button
 $(".timer").html("<button>Start Game</button>");
 
 $("button").on("click", function timeUp() {
-    var setTime = setTimeout(gameOver, 6000);  
+    var setTime = setTimeout(gameOver, 45000);  
+
     console.log("button is working");
-    // Display Questions
+    // Display Questions and answers
     for (let i = 0; i < quizQuestions.length; i++) {
         $(".question" +(i+1)).html("<p>" + quizQuestions[i].question);
+
     for (let j = 0; j < quizQuestions[i].choice.length; j++) {
-        $(".form" +(i+1)).append("<input type='radio' name=\"" + quizQuestions[i].question + "\" + value=\"" + quizQuestions[i].choice[j].guess + "\" >" + "\t" + quizQuestions[i].choice[j].guess + "\t");
-        $(".form" +(i+1)).append("<br>");
+        $(".question" +(i+1)).append("<input type='radio' name=\"" + quizQuestions[i].question + "\" + value=\"" + j + "\" >" + "\t" + quizQuestions[i].choice[j] + "\t");
+        $(".question" +(i+1)).append("<br>");
        
     }
-    
+    $(".timer").html("<button id='submit'>Submit</button>");
+    console.log("submit button appears")
+    $("#submit").on("click", gameOver);
 }
 });
 
+// $(".questions").append("<p>" + "<button id='submit'>Submit</button");
+// $("#submit").on("click", gameOver());
+
+// $("#submit").on("click", gameOver());
+
 function gameOver () {
+   for (let index = 0; index < quizQuestions.length; index++) {
+       var ans = $(".question" + (index+1) + " input[type='radio']:checked").val();
+       console.log("For question " + index + " recieved the value of " + ans);
+       if(ans == quizQuestions[index].correct){
+           correct++;
+       }
+       else{
+           incorrect++;
+       }
+   }
+
+        
+        
+    
     console.log("times up")
     $("#questions").html("<p>" + "Times Up! Let's see your score..");
     $("#questions").append("<p>" + "You got " + correct + " questions right");
