@@ -59,17 +59,14 @@ $("button").on("click", function timeUp() {
         $(".question" +(i+1)).append("<br>");
        
     }
+    // Submit button for if user finishes before time is up
     $(".timer").html("<button id='submit'>Submit</button>");
     console.log("submit button appears")
     $("#submit").on("click", gameOver);
 }
 });
 
-// $(".questions").append("<p>" + "<button id='submit'>Submit</button");
-// $("#submit").on("click", gameOver());
-
-// $("#submit").on("click", gameOver());
-
+// Game Over Function -- checks the answers for correctness and logs score
 function gameOver () {
    for (let index = 0; index < quizQuestions.length; index++) {
        var ans = $(".question" + (index+1) + " input[type='radio']:checked").val();
@@ -84,9 +81,9 @@ function gameOver () {
 
         
         
-    
+    // Switch to game over page
     console.log("times up")
-    $("#questions").html("<p>" + "Times Up! Let's see your score..");
+    $("#questions").html("<p>" + "Let's see your score..");
     $("#questions").append("<p>" + "You got " + correct + " questions right");
     $("#questions").append("<p>" + "You got " + incorrect + " questions wrong");
 
